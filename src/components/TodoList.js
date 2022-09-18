@@ -6,6 +6,7 @@ import TodoForm from './TodoForm'
 function TodoList() {
   const [todos, setTodos] = useState([])
 
+  //add A To do to todoList (todos)
   const addTodo = todo => {
     if(!todo.text || /^\s*$/.test(todo.text)) {
       return
@@ -17,7 +18,7 @@ function TodoList() {
     // console.log(todo, ...todos);
   };
 
-
+  //Edit a To do
   const editTodo = (todoId, newValue) => {
     if(!newValue || /^\s*$/.test(newValue)) {
       return;
@@ -27,7 +28,7 @@ function TodoList() {
 
   }
 
-
+  //Remove a to do from (todos)
   const removeTodo = id => {
     const removeArr = [...todos].filter(todo => todo.id !== id)
 
@@ -37,8 +38,13 @@ function TodoList() {
 
   
 
-
+  //Complete a to do by click it content
+  /*
+  * If it completed, it will have a bonus class name "complete" which
+  * will make it have a strike text style
+  */
   const completeTodo = id => {
+    console.log("just call   complete todo")
     let updatedTodos = todos.map(todo => {
       if (todo.id === id) {
         todo.isComplete = !todo.isComplete
